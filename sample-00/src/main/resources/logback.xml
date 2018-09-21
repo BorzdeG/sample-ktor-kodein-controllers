@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration
+  xmlns="http://ch.qos.logback/xml/ns/logback"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://ch.qos.logback/xml/ns/logback https://raw.githubusercontent.com/enricopulatzo/logback-XSD/master/src/main/xsd/logback.xsd"
+  scan="true" scanPeriod="5 minutes"
+  packagingData="true" debug="true"
+>
+
+  <logger name="org.flywaydb" level="info" />
+  <logger name="com.wix" level="info" />
+  <logger name="io.netty" level="info" />
+
+  <logger name="ru.capjack.app.stripSlotsStandalone.server.algorithms.honest.Runner"
+          level="debug" />
+  <logger name="ru.capjack.games.slots.logic.AbstractBaseLogic" level="trace" />
+  <logger name="ru.capjack.app.stripSlotsStandalone.server.config.RobokassaConfig" level="trace" />
+
+  <logger name="ru.capjack.app.stripSlotsStandalone.server.db.datasource" level="debug" />
+  <logger name="ru.capjack.app.stripSlotsStandalone.server.config" level="debug" />
+
+  <statusListener class="ch.qos.logback.core.status.OnConsoleStatusListener" />
+  <shutdownHook />
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+  <!--<appender name="Logstash" class="ch.qos.logback.core.FileAppender">-->
+  <!--<file>logstash.log</file>-->
+  <!--<encoder class="net.logstash.logback.encoder.LogstashEncoder"/>-->
+  <!--</appender>-->
+
+  <root level="trace">
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="Logstash" />
+  </root>
+</configuration>
